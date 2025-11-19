@@ -1,0 +1,85 @@
+<% const renderBody=()=> { %>
+    <section class="hero lp-hero">
+        <div class="container lp-hero-inner">
+            <div class="lp-hero-copy">
+                <h1 class="lp-hero-title">Showcase every listing on its own beautiful page</h1>
+                <p class="lp-hero-sub">
+                    Launch elegant property pages in seconds. Capture high‑intent inquiries and route qualified buyers
+                    to brokers.
+                </p>
+                <div class="lp-cta-row">
+                    <a class="btn btn-primary" href="#listings">Browse Listings</a>
+                    <a class="btn btn-ghost" href="/contact">Talk to us</a>
+                </div>
+                <div class="lp-badges">
+                    <span>Fast setup</span>
+                    <span>Mobile optimized</span>
+                    <span>SEO-friendly</span>
+                </div>
+            </div>
+            <div class="lp-hero-media" aria-hidden="true">
+                <div class="lp-hero-card"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lp-stats">
+        <div class="container lp-stats-row">
+            <div class="lp-stat">
+                <div class="lp-stat-num">15,000+</div>
+                <div class="lp-stat-label">agents and teams</div>
+            </div>
+            <div class="lp-stat">
+                <div class="lp-stat-num">4.8/5</div>
+                <div class="lp-stat-label">user rating</div>
+            </div>
+            <div class="lp-stat">
+                <div class="lp-stat-num">SEO</div>
+                <div class="lp-stat-label">optimized structure</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="listings" class="lp-listings">
+        <div class="container">
+            <div class="lp-listings-head">
+                <h2>Active Listings</h2>
+                <p class="lp-muted">Explore properties and submit your interest instantly.</p>
+            </div>
+            <div class="grid">
+                <% properties.forEach(p=> { %>
+                    <a class="card lp-card" href="/properties/<%= p._id %>">
+                        <div class="card-img lp-card-img"
+                            style="background-image:url('<%= p.coverImageUrl || 'https://via.placeholder.com/1200x800?text=Property' %>')">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="lp-card-title">
+                                <%= p.title %>
+                            </h3>
+                            <div class="lp-card-meta">
+                                <div><strong>Sq. Ft.</strong>
+                                    <%= p.sqFt.toLocaleString() %>
+                                </div>
+                                <div><strong>Price/SqFt</strong> ₹<%= p.pricePerSqFt.toLocaleString() %>
+                                </div>
+                            </div>
+                            <div class="lp-card-line">
+                                <span class="lp-muted">Owner</span>
+                                <span>
+                                    <%= p.ownerName %>
+                                </span>
+                            </div>
+                            <div class="lp-card-line">
+                                <span class="lp-muted">Broker</span>
+                                <span>
+                                    <%= p.brokerName %> · <%= p.brokerPhone %>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                    <% }) %>
+            </div>
+        </div>
+    </section>
+    <% }; %>
+        <%- include('layout', { title, includeBody: renderBody }) %>

@@ -1,0 +1,51 @@
+<% const renderBody=()=> { %>
+    <div class="container">
+        <% if (!property) { %>
+            <h2>Property not found</h2>
+            <% } else { %>
+                <div class="detail">
+                    <div class="detail-img"
+                        style="background-image:url('<%= property.coverImageUrl || 'https://via.placeholder.com/800x450?text=Property' %>')">
+                    </div>
+                    <div class="detail-info">
+                        <h1>
+                            <%= property.title %>
+                        </h1>
+                        <p><strong>Address</strong>: <%= property.address || '—' %>
+                        </p>
+                        <p><strong>Sq. Ft.</strong>: <%= property.sqFt.toLocaleString() %>
+                        </p>
+                        <p><strong>Price/SqFt</strong>: ₹<%= property.pricePerSqFt.toLocaleString() %>
+                        </p>
+                        <p><strong>Total (approx)</strong>: ₹<%= (property.sqFt *
+                                property.pricePerSqFt).toLocaleString() %>
+                        </p>
+                        <p><strong>Owner</strong>: <%= property.ownerName %>
+                        </p>
+                        <p><strong>Broker</strong>: <%= property.brokerName %> (Ph: <%= property.brokerPhone %>)</p>
+                        <p>
+                            <%= property.description || '' %>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lead-form">
+                    <h2>Interested? Fill out the form below</h2>
+
+                    <div class="google-form-container">
+                        <% const formId='1FAIpQLSdmLYAsTcDEgK7Z7oktrvLObCGuf5d84JobaJrU2CLPqWE_vQ' ; const
+                            entryPropertyTitle='entry.630330059' ; const prefillParams=new URLSearchParams({
+                            [entryPropertyTitle]: property.title, 'embedded' : 'true' }); const
+                            formUrl='https://docs.google.com/forms/d/e/' + formId + '/viewform?' +
+                            prefillParams.toString(); %>
+
+                            <iframe src="<%= formUrl %>" width="100%" height="800" frameborder="0" marginheight="0"
+                                marginwidth="0" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;">
+                                Loading…
+                            </iframe>
+                    </div>
+                </div>
+                <% } %>
+    </div>
+    <% }; %>
+        <%- include('layout', { title, includeBody: renderBody, property }) %>
