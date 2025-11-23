@@ -47,7 +47,7 @@ console.log(
         address: "Whitefield, Bengaluru",
         description: "Premium villa near tech park.",
         coverImageUrl:
-          "https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?q=80&w=1200",
+          "https://unsplash.com/photos/a-beautiful-white-building-reflects-on-the-calm-water-wz1BNj3MVzU?q=80&w=1200",
       },
       {
         title: "Downtown Studio",
