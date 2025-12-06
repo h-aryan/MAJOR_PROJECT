@@ -49,8 +49,7 @@
             <div class="grid">
                 <% properties.forEach(p=> { %>
                     <a class="card lp-card" href="/properties/<%= p._id %>">
-                        <div class="card-img lp-card-img"
-                            style="background-image:url('<%= p.coverImageUrl || 'https://via.placeholder.com/1200x800?text=Property' %>')">
+                        <div class="card-img lp-card-img" style="background-image:url('<%- p.coverImageUrl %>')">
                         </div>
                         <div class="card-body">
                             <h3 class="lp-card-title">
