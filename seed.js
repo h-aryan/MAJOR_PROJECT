@@ -2,7 +2,6 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const Property = require("./models/Property");
 
-// Use connection string directly from .env
 const mongoURI = process.env.MONGODB_URI;
 
 if (!mongoURI) {
@@ -46,8 +45,7 @@ console.log(
         brokerPhone: "+91 99887 76655",
         address: "Whitefield, Bengaluru",
         description: "Premium villa near tech park.",
-        coverImageUrl:
-          "https://unsplash.com/photos/a-beautiful-white-building-reflects-on-the-calm-water-wz1BNj3MVzU?q=80&w=1200",
+        coverImageUrl: "/public/lake.jpg",
       },
       {
         title: "Downtown Studio",
